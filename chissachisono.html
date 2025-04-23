@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Bloccato</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .nascosto { display: none; margin-top: 20px; color: green; }
+    input { margin-bottom: 10px; display: block; }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>Verifica di accesso</h2>
+
+  <form id="quizForm">
+    <label>1. Colore del cielo sereno?</label>
+    <input type="text" id="q1">
+
+    <label>2. Quanto fa 4 x 2?</label>
+    <input type="number" id="q2">
+
+    <button type="button" onclick="verificaRisposte()">Controlla</button>
+  </form>
+
+  <div id="accesso" class="nascosto">
+    ✅ Tutto corretto! <a href="pagina_successiva.html">Vai avanti</a>
+  </div>
+
+  <script>
+    function verificaRisposte() {
+      const r1 = document.getElementById('q1').value.trim().toLowerCase();
+      const r2 = document.getElementById('q2').value;
+
+      if (r1 === 'blu' && r2 === '8') {
+        document.getElementById('accesso').classList.remove('nascosto');
+      } else {
+        alert('❌ Risposta sbagliata. Riprova!');
+      }
+    }
+  </script>
+
+</body>
+</html>
