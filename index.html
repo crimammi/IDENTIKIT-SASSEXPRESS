@@ -2,30 +2,112 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Bloccato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Giocoso</title>
+  
+  <!-- Google Fonts per un font carino -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    .nascosto { display: none; margin-top: 20px; color: green; }
-    input { margin-bottom: 10px; display: block; }
-    button { margin-top: 10px; }
+    /* Layout globale */
+    body {
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(to right, #ff7e5f, #feb47b); /* sfondo arancio-rosa */
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    /* Form centrato */
+    #quizForm {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #ff6347;
+      font-size: 2.5em;
+    }
+
+    label {
+      font-size: 1.2em;
+      margin: 10px 0;
+      display: block;
+    }
+
+    input {
+      font-size: 1.2em;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #ff6347;
+      width: 80%;
+      margin-bottom: 15px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #ff4500;
+    }
+
+    button {
+      font-size: 1.3em;
+      padding: 10px 20px;
+      background-color: #ff6347;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      color: white;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #ff4500;
+    }
+
+    /* Parola segreta nascosta con animazione */
+    #successo {
+      margin-top: 20px;
+      display: none;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #32cd32;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h2>Verifica di accesso</h2>
-
+  <h2>Benvenuto nel Quiz Giocoso!</h2>
+  
   <form id="quizForm">
-    <label>1. Colore del cielo sereno?</label>
-    <input type="text" id="q1">
+    <label for="q1">1. Qual è la capitale della Francia?</label>
+    <input type="text" id="q1" placeholder="Scrivi la risposta...">
 
-    <label>2. Quanto fa 4 x 2?</label>
-    <input type="number" id="q2">
+    <label for="q2">2. Quanto fa 10 + 5?</label>
+    <input type="number" id="q2" placeholder="Risposta numerica">
 
-    <button type="button" onclick="verificaRisposte()">Controlla</button>
+    <button type="button" onclick="verificaRisposte()">Controlla Risposte</button>
   </form>
 
-  <div id="accesso" class="nascosto">
-    ✅ Tutto corretto! <a href="pagina_successiva.html">Vai avanti</a>
+  <div id="successo">
+    🎉 La tua parola segreta è: **GIRASOLE** 🌻
   </div>
 
   <script>
@@ -33,10 +115,10 @@
       const r1 = document.getElementById('q1').value.trim().toLowerCase();
       const r2 = document.getElementById('q2').value;
 
-      if (r1 === 'blu' && r2 === '8') {
-        document.getElementById('accesso').classList.remove('nascosto');
+      if (r1 === 'parigi' && r2 === '15') {
+        document.getElementById('successo').style.display = 'block';  // Mostra la parola segreta
       } else {
-        alert('❌ Risposta sbagliata. Riprova!');
+        alert('❌ Risposte sbagliate. Riprova!');
       }
     }
   </script>
