@@ -73,6 +73,22 @@
       font-size: 1.2rem;
       font-weight: bold;
     }
+    .boarding-pass {
+      margin-top: 2rem;
+      background: #f7f7f7;
+      padding: 2rem;
+      border: 2px dashed #0074b8;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+    }
+    .boarding-pass h2 {
+      margin: 0 0 1rem;
+      color: #003a63;
+    }
+    .boarding-pass p {
+      margin: 0.5rem 0;
+    }
     @media (max-width: 600px) {
       .container {
         margin: 1rem;
@@ -116,6 +132,11 @@
       <button type="submit">Verifica e Prenota</button>
     </form>
     <div id="result"></div>
+    <div class="boarding-pass" id="boardingPass">
+      <h2>Carta d'imbarco</h2>
+      <p><strong>Destinazione:</strong> Via Adige 10</p>
+      <p><strong>Messaggio:</strong> Bravo! Vieni a trovarmi al mio indirizzo di residenza</p>
+    </div>
   </div>
 
   <script>
@@ -143,9 +164,19 @@
       }
 
       const resultDiv = document.getElementById('result');
-      resultDiv.style.color = corrette ? 'green' : 'red';
-      resultDiv.textContent = corrette ? "BRAVO, LA RISPOSTA È VIA ADIGE" : "Qualcosa non torna... riprova!";
+      const boardingPass = document.getElementById('boardingPass');
+
+      if (corrette) {
+        resultDiv.style.color = 'green';
+        resultDiv.textContent = "Bravo! Vieni a trovarmi al mio indirizzo di residenza";
+        boardingPass.style.display = 'block';
+      } else {
+        resultDiv.style.color = 'red';
+        resultDiv.textContent = "Qualcosa non torna... riprova!";
+        boardingPass.style.display = 'none';
+      }
     });
   </script>
 </body>
 </html>
+
