@@ -3,93 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biglietto Aereo - Quiz Enigmistico</title>
+  <title>Prenotazione Volo | AirQuiz</title>
   <style>
     body {
-      font-family: 'Trebuchet MS', sans-serif;
-      background: #f3efe0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #d0eaff, #ffffff);
       margin: 0;
-      padding: 2rem;
-      color: #2e1f0f;
+      padding: 0;
+    }
+    .navbar {
+      background-color: #0074b8;
+      padding: 1rem;
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
     .container {
       max-width: 600px;
-      margin: auto;
-      background: #fff9e6;
-      border: 2px solid #bfa26f;
+      margin: 2rem auto;
+      background: white;
       border-radius: 10px;
       padding: 2rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
     h1 {
       text-align: center;
-      color: #5c3d1d;
+      color: #003a63;
+      margin-bottom: 1rem;
     }
     label {
       display: block;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       font-weight: bold;
+      color: #003a63;
     }
     input[type="text"] {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.7rem;
       margin-top: 0.3rem;
-      border: 1px solid #c0a87d;
+      border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1rem;
     }
     button {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       width: 100%;
-      padding: 0.7rem;
-      background: #a37843;
+      padding: 0.9rem;
+      background: #0074b8;
       color: white;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background 0.3s;
     }
     button:hover {
-      background: #8d6635;
+      background: #005f97;
     }
     #result {
       margin-top: 2rem;
       text-align: center;
       font-size: 1.2rem;
-      color: green;
       font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="navbar">AirQuiz - Prenota il tuo volo misterioso</div>
   <div class="container">
-    <h1>Compila il tuo Biglietto Aereo</h1>
+    <h1>Inserisci i dati per la prenotazione</h1>
     <form id="quizForm">
-      <label for="nome">Nome ("Giudice di Dio"):</label>
+      <label for="nome">Nome:</label>
       <input type="text" id="nome" required />
 
-      <label for="cognome">Cognome (Cartografo fiorentino):</label>
+      <label for="cognome">Cognome:</label>
       <input type="text" id="cognome" required />
 
-      <label for="secondonome">Secondo nome (Oceano che tocca Australia e Nuova Zelanda):</label>
+      <label for="secondonome">Secondo nome:</label>
       <input type="text" id="secondonome" required />
 
-      <label for="nazione">Nazionalità (Unificata nel 1861):</label>
+      <label for="nazione">Nazionalità:</label>
       <input type="text" id="nazione" required />
 
-      <label for="isola">Ultimo viaggio (Isola di ghiaccio e fuoco):</label>
+      <label for="isola">Ultima destinazione:</label>
       <input type="text" id="isola" required />
 
-      <label for="anno">Anno di nascita (Muro di Berlino):</label>
+      <label for="anno">Anno di nascita:</label>
       <input type="text" id="anno" required />
 
-      <label for="difficile">Paese difficile (culto del leader, orologio unico):</label>
+      <label for="difficile">Viaggio più impegnativo:</label>
       <input type="text" id="difficile" required />
 
-      <label for="piatto">Piatto cucinato (risaie lombarde, zafferano):</label>
+      <label for="piatto">Piatto speciale al ritorno:</label>
       <input type="text" id="piatto" required />
 
-      <button type="submit">Controlla le risposte</button>
+      <button type="submit">Verifica e Prenota</button>
     </form>
     <div id="result"></div>
   </div>
@@ -119,7 +134,8 @@
       }
 
       const resultDiv = document.getElementById('result');
-      resultDiv.textContent = corrette ? "BRAVO, LA RISPOSTA E' VIA ADIGE" : "Qualcosa non torna... riprova!";
+      resultDiv.style.color = corrette ? 'green' : 'red';
+      resultDiv.textContent = corrette ? "BRAVO, LA RISPOSTA È VIA ADIGE" : "Qualcosa non torna... riprova!";
     });
   </script>
 </body>
