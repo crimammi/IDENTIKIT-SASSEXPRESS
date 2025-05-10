@@ -14,10 +14,16 @@
     .navbar {
       background-color: #0074b8;
       padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
-      text-align: center;
       font-size: 1.5rem;
       font-weight: bold;
+    }
+    .navbar img {
+      height: 40px;
+      margin-right: 10px;
     }
     .container {
       max-width: 600px;
@@ -76,7 +82,10 @@
   </style>
 </head>
 <body>
-  <div class="navbar">AirQuiz - Prenota il tuo volo misterioso</div>
+  <div class="navbar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Airplane_silhouette.png" alt="Logo AirQuiz">
+    AirQuiz - Prenota il tuo volo misterioso
+  </div>
   <div class="container">
     <h1>Inserisci i dati per la prenotazione</h1>
     <form id="quizForm">
