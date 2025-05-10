@@ -1,127 +1,126 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Giocoso</title>
-  
-  <!-- Google Fonts per un font carino -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biglietto Aereo - Quiz Enigmistico</title>
   <style>
-    /* Layout globale */
     body {
-      font-family: 'Pacifico', cursive;
-      background: linear-gradient(to right, #ff7e5f, #feb47b); /* sfondo arancio-rosa */
-      color: white;
-      text-align: center;
-      padding: 40px;
+      font-family: 'Trebuchet MS', sans-serif;
+      background: #f3efe0;
+      margin: 0;
+      padding: 2rem;
+      color: #2e1f0f;
     }
-
-    /* Form centrato */
-    #quizForm {
-      background-color: rgba(255, 255, 255, 0.8);
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff9e6;
+      border: 2px solid #bfa26f;
       border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-      display: inline-block;
-      max-width: 400px;
-      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
-
-    h2 {
-      color: #ff6347;
-      font-size: 2.5em;
+    h1 {
+      text-align: center;
+      color: #5c3d1d;
     }
-
     label {
-      font-size: 1.2em;
-      margin: 10px 0;
       display: block;
+      margin-top: 1rem;
+      font-weight: bold;
     }
-
-    input {
-      font-size: 1.2em;
-      padding: 10px;
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #c0a87d;
       border-radius: 5px;
-      border: 2px solid #ff6347;
-      width: 80%;
-      margin-bottom: 15px;
-      outline: none;
-      transition: all 0.3s ease;
+      font-size: 1rem;
     }
-
-    input:focus {
-      border-color: #ff4500;
-    }
-
     button {
-      font-size: 1.3em;
-      padding: 10px 20px;
-      background-color: #ff6347;
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.7rem;
+      background: #a37843;
+      color: white;
+      font-size: 1.1rem;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: 0.3s ease;
-      color: white;
-      margin-top: 10px;
     }
-
     button:hover {
-      background-color: #ff4500;
+      background: #8d6635;
     }
-
-    /* Parola segreta nascosta con animazione */
-    #successo {
-      margin-top: 20px;
-      display: none;
-      font-size: 1.5em;
+    #result {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: green;
       font-weight: bold;
-      color: #32cd32;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Compila il tuo Biglietto Aereo</h1>
+    <form id="quizForm">
+      <label for="nome">Nome ("Giudice di Dio"):</label>
+      <input type="text" id="nome" required />
 
-  <h2>Benvenuto nel Quiz Giocoso!</h2>
-  
-  <form id="quizForm">
-    <label for="q1">1. Qual è la capitale della Francia?</label>
-    <input type="text" id="q1" placeholder="Scrivi la risposta...">
+      <label for="cognome">Cognome (Cartografo fiorentino):</label>
+      <input type="text" id="cognome" required />
 
-    <label for="q2">2. Quanto fa 10 + 5?</label>
-    <input type="number" id="q2" placeholder="Risposta numerica">
+      <label for="secondonome">Secondo nome (Oceano che tocca Australia e Nuova Zelanda):</label>
+      <input type="text" id="secondonome" required />
 
-    <button type="button" onclick="verificaRisposte()">Controlla Risposte</button>
-  </form>
+      <label for="nazione">Nazionalità (Unificata nel 1861):</label>
+      <input type="text" id="nazione" required />
 
-  <div id="successo">
-    🎉 La tua parola segreta è: **GIRASOLE** 🌻
+      <label for="isola">Ultimo viaggio (Isola di ghiaccio e fuoco):</label>
+      <input type="text" id="isola" required />
+
+      <label for="anno">Anno di nascita (Muro di Berlino):</label>
+      <input type="text" id="anno" required />
+
+      <label for="difficile">Paese difficile (culto del leader, orologio unico):</label>
+      <input type="text" id="difficile" required />
+
+      <label for="piatto">Piatto cucinato (risaie lombarde, zafferano):</label>
+      <input type="text" id="piatto" required />
+
+      <button type="submit">Controlla le risposte</button>
+    </form>
+    <div id="result"></div>
   </div>
 
   <script>
-    function verificaRisposte() {
-      const r1 = document.getElementById('q1').value.trim().toLowerCase();
-      const r2 = document.getElementById('q2').value;
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-      if (r1 === 'parigi' && r2 === '15') {
-        document.getElementById('successo').style.display = 'block';  // Mostra la parola segreta
-      } else {
-        alert('❌ Risposte sbagliate. Riprova!');
+      const risposte = {
+        nome: 'daniele',
+        cognome: 'toscanelli',
+        secondonome: 'oceano',
+        nazione: 'italia',
+        isola: 'islanda',
+        anno: '1989',
+        difficile: 'corea del nord',
+        piatto: 'risotto alla milanese'
+      };
+
+      let corrette = true;
+      for (let key in risposte) {
+        const input = document.getElementById(key).value.trim().toLowerCase();
+        if (input !== risposte[key]) {
+          corrette = false;
+          break;
+        }
       }
-    }
-  </script>
 
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = corrette ? "BRAVO, LA RISPOSTA E' VIA ADIGE" : "Qualcosa non torna... riprova!";
+    });
+  </script>
 </body>
 </html>
